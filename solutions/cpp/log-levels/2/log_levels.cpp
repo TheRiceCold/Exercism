@@ -1,0 +1,17 @@
+#include <string>
+
+namespace log_line {
+std::string message(const std::string &line) {
+  return line.substr(line.find(" ")+1);
+}
+
+std::string log_level(const std::string &line) {
+  // return the log level
+  return line.substr(1, line.find("]")-1);
+}
+
+std::string reformat(const std::string &line) {
+  // return the reformatted message
+  return message(line) + " (" + log_level(line) + ")";
+}
+}  // namespace log_line
